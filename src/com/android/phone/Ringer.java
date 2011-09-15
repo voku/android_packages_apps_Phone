@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2011 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -324,7 +325,6 @@ public class Ringer {
             };
         }
     }
-
     private static void log(String msg) {
         Log.d(LOG_TAG, msg);
     }
