@@ -498,6 +498,9 @@ public class BluetoothHeadsetService extends Service {
                 mHeadsetType = BluetoothHandsfree.TYPE_HANDSFREE;
                 int channel = mRemoteDevice.getServiceChannel(BluetoothUuid.Handsfree);
                 mConnectThread = new RfcommConnectThread(mRemoteDevice, channel, mHeadsetType);
+                if (mAdapter.isDiscovering()) {
+                    mAdapter.cancelDiscovery();
+                }
                 mConnectThread.start();
                 return;
             } else if (BluetoothUuid.isUuidPresent(uuids, BluetoothUuid.HSP)) {
@@ -505,6 +508,9 @@ public class BluetoothHeadsetService extends Service {
                 mHeadsetType = BluetoothHandsfree.TYPE_HEADSET;
                 int channel = mRemoteDevice.getServiceChannel(BluetoothUuid.HSP);
                 mConnectThread = new RfcommConnectThread(mRemoteDevice, channel, mHeadsetType);
+                if (mAdapter.isDiscovering()) {
+                    mAdapter.cancelDiscovery();
+                }
                 mConnectThread.start();
                 return;
             }

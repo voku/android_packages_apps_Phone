@@ -2853,6 +2853,8 @@ public class InCallScreen extends Activity
         int id = view.getId();
         if (id == R.id.endButton) {
             Connection c = PhoneUtils.getConnection(mPhone, PhoneUtils.getCurrentCall(mPhone));
+            if (c == null)
+                return false; // c can be null from getConnection(), so don't crash below
             String number = c.getAddress();
             // Confirm for addBlack
             new AlertDialog.Builder(this)
@@ -4971,7 +4973,7 @@ public class InCallScreen extends Activity
      *        or 0 if no hint should be visible.
      * @param hintColorResId resource ID for the color of the hint text
      */
-    /* package */ void updateSlidingTabHint(int hintTextResId, int hintColorResId) {
+    /* package */ void updateRotarySelectorHint(int hintTextResId, int hintColorResId) {
         if (VDBG) log("updateRotarySelectorHint(" + hintTextResId + ")...");
         if (mCallCard != null) {
             mCallCard.setRotarySelectorHint(hintTextResId, hintColorResId);
