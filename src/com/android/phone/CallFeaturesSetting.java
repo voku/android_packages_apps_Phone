@@ -610,7 +610,7 @@ private static final int ADD_BLACK_LIST_ID = 3;
                             mNewVMNumber,
                             Message.obtain(mRevertOptionComplete, EVENT_VOICEMAIL_CHANGED));
                 }
-                if (mFwdChangesRequireRollback) {
+                if (mFwdChangesRequireRollback && prevSettings != null) {
                     if (DBG) log("have to revert fwd");
                     final CallForwardInfo[] prevFwdSettings =
                         prevSettings.forwardingSettings;
